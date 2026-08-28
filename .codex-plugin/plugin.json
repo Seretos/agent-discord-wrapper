@@ -1,0 +1,23 @@
+{
+  "name": "agent-discord-wrapper",
+  "version": "0.0.1",
+  "description": "Pairs the external Discord MCP server with a skill so Claude can operate a Discord server - posting text and image attachments, managing channels, roles, threads and moderation - through structured MCP operations instead of hand-driving the Discord API.",
+  "author": {
+    "name": "Arne von Appen"
+  },
+  "repository": "https://github.com/Seretos/agent-discord-wrapper",
+  "skills": "./skills",
+  "interface": {
+    "displayName": "Agent Discord Wrapper",
+    "shortDescription": "Pairs the external Discord MCP server with a skill so Claude can operate a Discord server - posting text and image attachments, managing channels, roles, threads and moderation - through structured MCP operations instead of hand-driving the Discord API."
+  },
+  "mcpServers": {
+    "discord": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@quadslab.io/discord-mcp@2.1.1"
+      ]
+    }
+  }
+}
