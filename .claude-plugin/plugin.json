@@ -1,0 +1,36 @@
+{
+  "name": "agent-discord-wrapper",
+  "description": "Pairs the external Discord MCP server with a skill so Claude can operate a Discord server - posting text and image attachments, managing channels, roles, threads and moderation - through structured MCP operations instead of hand-driving the Discord API.",
+  "version": "0.0.0",
+  "author": { "name": "Arne von Appen" },
+  "dependencies": [],
+  "userConfig": {
+    "bot_token": {
+      "type": "string",
+      "title": "Discord bot token",
+      "description": "The bot token from https://discord.com/developers/applications -> your app -> Bot -> Reset Token. Both privileged gateway intents (Server Members, Message Content) must be enabled on that page or every call fails with close code 4014.",
+      "sensitive": true,
+      "required": true
+    },
+    "guild_id": {
+      "type": "string",
+      "title": "Discord server (guild) ID",
+      "description": "The numeric ID of the one Discord server this plugin operates on. Enable Developer Mode in Discord, then right-click the server icon -> Copy Server ID. The server handles exactly one guild.",
+      "sensitive": false,
+      "required": true
+    }
+  },
+  "mcpServers": {
+    "discord": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@quadslab.io/discord-mcp@2.1.1"
+      ],
+      "env": {
+        "DISCORD_TOKEN": "${user_config.bot_token}",
+        "DISCORD_GUILD_ID": "${user_config.guild_id}"
+      }
+    }
+  }
+}
